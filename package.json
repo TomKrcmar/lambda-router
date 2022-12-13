@@ -10,9 +10,10 @@
 	"module": "./build/index.js",
 	"types": "./build/index.d.ts",
 	"scripts": {
-		"build:w": "rollup -c -w",
 		"build": "rollup -c",
-		"test": "jest --coverage"
+		"build:w": "rollup -c -w",
+		"test": "jest --coverage",
+		"test:w": "jest --coverage --watch"
 	},
 	"devDependencies": {
 		"@rollup/plugin-commonjs": "^23.0.4",
