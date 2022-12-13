@@ -29,6 +29,30 @@ router.get('/hello', (req, res) => {
 })
 ```
 
+Route parameters
+```ts
+router.get('/thing/:id', (req, res) => {
+	const { id } = req.params;
+	res.send(`Thing data for thing number ${id}`);
+})
+```
+
+Optional route parameters
+```ts
+router.get('/thing/:id?', (req, res) => {
+	const { id } = req.params;
+	if (id)
+		res.send(`Thing data for thing number ${id}`);
+	else
+		res.send('Thing index for all things');
+})
+
+// Regular text routes can also be optional:
+router.get('path/to?/something?/maybe?', (req, res) => {
+	// This matches path, path/to, path/to/something, and path/to/something/maybe
+});
+```
+
 Simple Middleware
 ```ts
 router.use((req, res, ctx) => {
