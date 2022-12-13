@@ -1,7 +1,7 @@
 {
 	"name": "@tomkrcmar/lambda-router",
 	"description": "Abstract route modeling and matching framework with an implementation for AWS Lambda",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"author": {
 		"name": "Thomas Krcmar",
 		"email": "tomkrcmar@gmail.com"
