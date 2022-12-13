@@ -149,7 +149,7 @@ export function handler(event, context) {
 ```
 
 ### **Custom Integration**:
-In order to integrate your route model into a server framework, there are two steps:
+In order to integrate your route model into a server framework, there are three steps:
 - Construct a `Request`
 - Call `Router.dispatch(request)`
 - Handle the `Response`
