@@ -1,4 +1,4 @@
-# lambda-router
+# @tomkrcmar/lambda-router
 
 A general purpose middleware, route modeling, and route matching framework.
 
@@ -17,7 +17,7 @@ There is no official documentation, but a good way to see example usage is the u
 
 Instantiate a Router
 ```ts
-import { Router } from 'lambda-router';
+import { Router } from '@tomkrcmar/lambda-router';
 const router = new Router();
 ```
 
@@ -95,7 +95,7 @@ router.get('/hello', (req, res) => {
 
 CORS middlware example
 ```ts
-import { Router } from 'lambda-router';
+import { Router } from '@tomkrcmar/lambda-router';
 
 const router = new Router();
 export default router;
@@ -121,7 +121,7 @@ Simply add your routes on a `LambdaRouter` at the top level and supply it to you
 
 Minimal example
 ```ts
-import { LambdaRouter } from 'lambda-router';
+import { LambdaRouter } from '@tomkrcmar/lambda-router';
 import myAppRouter from './my-app';
 
 export function handler(event, context) {
@@ -132,7 +132,7 @@ export function handler(event, context) {
 Example of adding our CORS middleware above, and a hello world endpoint directly onto the top-level router:
 
 ```ts
-import { LambdaRouter } from 'lambda-router';
+import { LambdaRouter } from '@tomkrcmar/lambda-router';
 import cors from './my-middleware/cors';
 
 const router = new LambdaRouter();
@@ -158,7 +158,7 @@ The `LambdaRouter` above performs all of these steps for you, constructing a `Re
 
 Minimal example of manually doing this with no conversion:
 ```ts
-import { Request, Router } from 'lambda-router';
+import { Request, Router } from '@tomkrcmar/lambda-router';
 
 const router = new Router();
 router.use('/hello', (req, res) => res.send('Hello, World!'))
@@ -174,10 +174,10 @@ const res = await router.dispatch(req);
 
 ```sh
 # Install as a runtime dependency
-npm install --save lambda-router
+npm install --save @tomkrcmar/lambda-router
 
 # Install as a development dependency if you have your own build or bundling process
-npm install --save-dev lambda-router
+npm install --save-dev @tomkrcmar/lambda-router
 ```
 
 ## Building and Testing
