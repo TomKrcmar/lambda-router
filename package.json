@@ -1,0 +1,31 @@
+{
+	"name": "lambda-router",
+	"description": "Abstract route modeling and matching framework with an implementation for AWS Lambda",
+	"version": "0.0.1",
+	"author": {
+		"name": "Thomas Krcmar",
+		"email": "tomkrcmar@gmail.com"
+	},
+	"type": "module",
+	"module": "./build/index.js",
+	"types": "./build/index.d.ts",
+	"scripts": {
+		"build:w": "rollup -c -w",
+		"build": "rollup -c",
+		"test": "jest --coverage"
+	},
+	"devDependencies": {
+		"@rollup/plugin-commonjs": "^23.0.4",
+		"@rollup/plugin-node-resolve": "^15.0.1",
+		"@rollup/plugin-typescript": "^10.0.1",
+		"@types/aws-lambda": "^8.10.109",
+		"@types/express": "^4.17.14",
+		"@types/jest": "^29.2.4",
+		"@types/node": "^18.11.9",
+		"jest": "^29.3.1",
+		"rollup": "^3.7.0",
+		"ts-jest": "^29.0.3",
+		"tslib": "^2.4.1",
+		"typescript": "^4.8.4"
+	}
+}
