@@ -1,5 +1,7 @@
 # @tomkrcmar/lambda-router
 
+[![npm](https://img.shields.io/npm/v/@tomkrcmar/lambda-router.svg)](https://www.npmjs.com/package/@tomkrcmar/lambda-router)
+
 A general purpose middleware, route modeling, and route matching framework.
 
 ## Features:
