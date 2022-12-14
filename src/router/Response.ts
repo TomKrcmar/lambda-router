@@ -38,6 +38,8 @@ export class Response {
 	}
 
 	send(body?: string | undefined) {
+		if (this.statusCode === 0)
+			this.statusCode = 200;
 		this.body = body || '';
 		this.sent = true;
 		return this;
