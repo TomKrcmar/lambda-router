@@ -4,10 +4,41 @@ import { Request } from './Request';
 import { Response } from './Response';
 import { Context } from './Context';
 
+export type LogLevel = 'info' | 'warn' | 'error';
+
+export type RouterConfig = {
+	name?: string;
+	silent?: boolean;
+	verbose?: boolean;
+};
+
 export class Router {
+	config: RouterConfig = {};
 	routes: RouteDecl[] = [];
 
-	constructor() {}
+	constructor(config?: RouterConfig) {
+		this.config = config || {};
+	}
+
+	log(level: LogLevel, ...args: any[]) {
+		const { silent = false, verbose = false, name } = this.config;
+		if (silent) return;
+
+		const type = this.constructor.name || 'Router';
+		const instance = name ? `:${name}` : '';
+		const prefix = `[${type}${instance}] ${level.toUpperCase()}: `;
+		args.unshift(prefix);
+
+		switch (level) {
+			case 'info': if (verbose) console.info(...args); break;
+			case 'warn': if (verbose) console.warn(...args); break;
+			case 'error': console.error(...args); break;
+			default: break;
+		}
+	}
+	logInfo(...args: any[]) { return this.log('info', ...args); }
+	logWarn(...args: any[]) { return this.log('warn', ...args); }
+	logError(...args: any[]) { return this.log('error', ...args); }
 
 	use(routeOrMw: Route | Middleware, middleware?: Middleware): Router {
 		const hasRoute = typeof routeOrMw === 'string';
@@ -99,9 +130,12 @@ export class Router {
 			throw new HttpError(404, `Cannot ${method.toUpperCase()} ${path}`);
 		}
 		catch(e: any) {
-			if (e instanceof HttpError)
+			if (e instanceof HttpError) {
+				this.logInfo(`${request.method} ${request.path} => HTTP ${e.code}: ${e.message}`);
 				return response.status(e.code).send(`[HTTP ${e.code}] ${e.message}`);
+			}
 			
+			this.logError('Unhandled non-HTTP error in middleware: ', e.stack);
 			return response.status(500).send('Internal server error');
 		}
 	}

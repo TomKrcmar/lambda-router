@@ -4,7 +4,8 @@
 		"module": "esnext",
 		"strict": true,
 		"lib": [
-		  "esnext"
+		  "esnext",
+		  "dom",
 		],
 		"baseUrl": "./src",
 		"types" : [
