@@ -38,7 +38,8 @@ export class LambdaRouter extends Router {
 				if (v !== undefined) request.params[k] = v;
 			});
 
-			request.body = event.body || '';
+			const bodyRaw = event.body || '';
+			request.body = event.isBase64Encoded ? atob(bodyRaw) : bodyRaw;
 
 			const response = await this.dispatch(request);
 
