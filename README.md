@@ -121,6 +121,11 @@ router.use((req, res, ctx) => {
 
 Simply add your routes on a `LambdaRouter` at the top level and supply it to your `handler` export in lambda. The rest of your app can be built with `Router`s and are completely portable, only the top-level router needs to be a `LambdaRouter`.
 
+There are multiple LambdaRouters available, but the default `LambdaRouter` will attempt to detect the right version:
+- `LambdaRouter` - Auto-detect API Gateway API version
+- `ApiGatewayLambdaRouter` - API Gateway V1 REST APIs
+- `ApiGatewayV2LambdaRouter` - API Gateway V2 HTTP APIs
+
 Minimal example
 ```ts
 import { LambdaRouter } from '@tomkrcmar/lambda-router';

@@ -4,4 +4,4 @@ export * from './Response';
 export * from './RouteDecl';
 export * from './Context';
 export * from './Router';
-export * from './LambdaRouter';
+export * from './apigwlambda';
