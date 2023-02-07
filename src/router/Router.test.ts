@@ -110,9 +110,11 @@ describe('Router', () => {
 	})
 
 	it('handles errors without throwing', async () => {
-		const router = new Router();
+		const router = new Router({
+			silent: true,
+		});
 		const fn0 = jest.fn(() => {
-			throw new Error('Unhandled error within middleware');
+			throw new Error('TEST UNHANDLED ERROR');
 		});
 		const fn1 = jest.fn(send());
 
